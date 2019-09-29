@@ -1,0 +1,19 @@
+{
+  "name": "hrr41-cow-list",
+  "version": "1.0.0",
+  "description": "npm modules i guess",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhambleton123/hrr41-cow-list.git"
+  },
+  "author": "Brian Hambleton <bhambl3t0n1@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bhambleton123/hrr41-cow-list/issues"
+  },
+  "homepage": "https://github.com/bhambleton123/hrr41-cow-list#readme"
+}
