@@ -17,7 +17,7 @@ DROP TABLE IF EXISTS `cows`;
 		
 CREATE TABLE `cows` (
   `id` tinyint AUTO_INCREMENT UNIQUE,
-  `name` varchar(255,
+  `name` varchar(255) UNIQUE,
   `description` varchar(255),
   PRIMARY KEY (`id`)
 );
