@@ -2,20 +2,22 @@ const express = require('express')
 const app = express()
 const port = 3000
 const db = require('./db/index.js');
+const bodyParser = require('body-parser');
+const models = require('./models/index.js');
+
+app.use(bodyParser.json());
 
 app.get('/api/cows', (req, res) => {
-    db.query('SELECT * FROM cows', (error, results) => {
-        if(error) throw error;
+    models.get((results) => {
         res.status(200).send(results);
     })
 })
 
 app.post('/api/cows', (req, res) => {
-    db.query('INSERT INTO cows (name, description) VALUES (?, ?)', 
-    [req.body.name, req.body.description], 
-    (error) => {
-        if(error) throw error;
-        res.status(201);
+    let params = [req.body.name, req.body.description];
+    models.post(params[0], params[1], (err, results) => {
+        if(err) throw err;
+        res.sendStatus(201);
     })
 })
 
