@@ -1,11 +1,13 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const db = require('./db/index.js');
 const bodyParser = require('body-parser');
 const models = require('./models/index.js');
+const cors = require('cors');
 
 app.use(bodyParser.json());
+app.use(express.static('client/public'));
+app.use(cors());
 
 app.get('/api/cows', (req, res) => {
     models.get((results) => {
@@ -14,11 +16,10 @@ app.get('/api/cows', (req, res) => {
 })
 
 app.post('/api/cows', (req, res) => {
-    let params = [req.body.name, req.body.description];
-    models.post(params[0], params[1], (err, results) => {
+    models.post(req.body.name, req.body.description, (err) => {
         if(err) throw err;
         res.sendStatus(201);
     })
 })
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Cow api listening on port ${port}!`))
