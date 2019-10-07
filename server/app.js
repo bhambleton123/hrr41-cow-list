@@ -16,6 +16,7 @@ app.get('/api/cows', (req, res) => {
 app.post('/api/cows', (req, res) => {
     models.post(req.body.name, req.body.description, (err) => {
         if(err) throw err;
+        console.log(req.body.name);
         res.sendStatus(201);
     })
 })
@@ -23,6 +24,7 @@ app.post('/api/cows', (req, res) => {
 app.put('/api/cows/:id', (req, res) => {
     models.put(req.params.id, req.body.name, (error, results) => {
         if(error) throw error;
+        console.log("Hi?")
         res.end(JSON.stringify(results));
     })
 })
