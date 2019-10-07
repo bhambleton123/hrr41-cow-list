@@ -14,3 +14,15 @@ module.exports.post = (name, description, callback) => {
         callback(error, results);
     })
 }
+
+module.exports.put = (id, name, callback) => {
+    db.query('UPDATE cows SET name = ? WHERE id = ?', 
+    [name, id], (error, results) => {
+        callback(error, results);
+    })
+}
+module.exports.delete = (id, callback) => {
+    db.query('DELETE FROM cows WHERE id= ?', [id], (err, results) => {
+        callback(err, results);
+    })
+}
